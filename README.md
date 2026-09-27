@@ -1,21 +1,15 @@
-# NEXTworks Website
+# NEXTworks 2.0
 
-Mobile-first landing page for NEXTworks, home of LINK.
+Mobile-first static landing page for NEXTworks — home of LINK.
 
-## Run locally
-Open `index.html` directly or serve the folder with any static server.
+## Deploy on GitHub Pages
+1. Create a GitHub repository.
+2. Upload `index.html` to the repository root.
+3. Open **Settings → Pages**.
+4. Under **Build and deployment**, choose **Deploy from a branch**.
+5. Select `main` and `/ (root)`, then save.
 
-## GitHub Pages
-1. Push these files to a GitHub repository.
-2. Open **Settings → Pages**.
-3. Under **Build and deployment**, select **Deploy from a branch**.
-4. Choose the `main` branch and `/ (root)`.
-5. Save.
+No npm, framework, build command or assets are required.
 
-## Structure
-- `index.html` — content and layout
-- `styles.css` — responsive UI, glass effects and animations
-- `script.js` — reveal animations, dynamic navigation state and header theme
-
-## Before publishing
-Replace the placeholder contact email `hello@nextworks.company` with your real NEXTworks contact address.
+## Edit
+Everything (HTML, CSS and JavaScript) lives inside `index.html`, which makes the site easy to update from a phone or tablet.
