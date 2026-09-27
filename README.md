@@ -1,15 +1,16 @@
-# NEXTworks 2.0
+# NEXTworks 2.1
 
-Mobile-first static landing page for NEXTworks — home of LINK.
+Mobile-first static landing page for NEXTworks.
 
-## Deploy on GitHub Pages
-1. Create a GitHub repository.
-2. Upload `index.html` to the repository root.
-3. Open **Settings → Pages**.
-4. Under **Build and deployment**, choose **Deploy from a branch**.
-5. Select `main` and `/ (root)`, then save.
+## New in 2.1
+- Czech / English language switch with saved preference
+- LINK Dev Builds section
+- NW Dev Testing membership gate ($49 one-time)
+- LINK versions 1.0–4.2
+- 4.0 and 4.1 marked Stable
+- 4.2 marked Latest + Stable
+- 1.0–3.9 marked Outdated / Offline / Unstable for offline preview
+- Build status filters
 
-No npm, framework, build command or assets are required.
-
-## Edit
-Everything (HTML, CSS and JavaScript) lives inside `index.html`, which makes the site easy to update from a phone or tablet.
+## Deploy
+Upload `index.html` to a GitHub repository and enable GitHub Pages from the repository settings. No build step required.

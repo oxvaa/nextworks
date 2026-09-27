@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
   <meta name="theme-color" content="#000000" />
   <meta name="color-scheme" content="dark light" />
-  <meta name="description" content="NEXTworks builds digital products for the next generation. Home of LINK." />
+  <meta name="description" content="NEXTworks builds digital products for the next generation. Home of LINK." id="metaDescription" />
   <title>NEXTworks — Build what’s next.</title>
   <style>
     :root{
@@ -228,20 +228,71 @@
     .reveal.in{opacity:1;transform:none}
     .delay-1{transition-delay:.09s}.delay-2{transition-delay:.18s}
 
+
+
+    .lang-switch{
+      display:flex;align-items:center;gap:3px;padding:3px;border-radius:999px;
+      background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.10);
+      margin-left:auto;
+    }
+    .lang-switch button{
+      border:0;background:transparent;color:#9f9fa5;min-width:34px;height:30px;border-radius:999px;
+      font-size:11px;font-weight:750;letter-spacing:.04em;cursor:pointer;transition:.25s ease;
+    }
+    .lang-switch button.active{background:#f5f5f7;color:#000;box-shadow:0 4px 14px rgba(0,0,0,.18)}
+    .nav .lang-switch + .nav-cta{margin-left:0}
+
+    .dev-builds{background:#0a0a0b;color:#fff;padding:112px var(--pad);position:relative;overflow:hidden}
+    .dev-builds::before{content:"";position:absolute;width:700px;height:700px;border-radius:50%;right:-420px;top:120px;background:radial-gradient(circle,rgba(60,111,255,.18),rgba(135,80,255,.08) 42%,transparent 68%);pointer-events:none}
+    .dev-inner{width:min(1100px,100%);margin:auto;position:relative;z-index:1}
+    .dev-head{display:flex;flex-direction:column;gap:18px;margin-bottom:28px}
+    .dev-head h2{margin:0;font-size:clamp(44px,12vw,86px);line-height:.92;letter-spacing:-.065em}
+    .dev-head p{margin:0;color:#9d9da3;font-size:17px;line-height:1.5;max-width:650px;letter-spacing:-.02em}
+    .membership-card{display:grid;grid-template-columns:1fr;gap:22px;padding:25px;border-radius:30px;background:linear-gradient(145deg,rgba(255,255,255,.095),rgba(255,255,255,.035));border:1px solid rgba(255,255,255,.12);box-shadow:0 25px 70px rgba(0,0,0,.30);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);margin-bottom:18px}
+    .membership-badge{display:inline-flex;align-items:center;gap:8px;width:max-content;padding:7px 10px;border-radius:999px;background:rgba(69,137,255,.12);border:1px solid rgba(91,153,255,.22);color:#84b9ff;font-size:11px;font-weight:750;letter-spacing:.08em;text-transform:uppercase}
+    .membership-badge i{width:7px;height:7px;border-radius:50%;background:#5ea0ff;box-shadow:0 0 16px rgba(94,160,255,.8)}
+    .membership-card h3{margin:13px 0 8px;font-size:31px;line-height:1;letter-spacing:-.045em}
+    .membership-card p{margin:0;color:#96969c;line-height:1.5;font-size:15px;max-width:620px}
+    .membership-side{display:flex;align-items:end;justify-content:space-between;gap:18px}
+    .price strong{display:block;font-size:39px;line-height:.95;letter-spacing:-.055em}.price span{display:block;margin-top:5px;color:#77777d;font-size:12px}
+    .join-btn{border:0;min-height:45px;padding:0 17px;border-radius:999px;background:#f5f5f7;color:#000;font-weight:700;font-size:13px;cursor:pointer;white-space:nowrap;transition:transform .2s var(--ease)}.join-btn:active{transform:scale(.97)}
+    .builds-toolbar{display:flex;flex-wrap:wrap;gap:8px;margin:28px 0 15px}
+    .filter-chip{border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.055);color:#aaaab0;padding:8px 11px;border-radius:999px;font-size:12px;font-weight:650;cursor:pointer;transition:.25s ease}.filter-chip.active{background:#fff;color:#000;border-color:#fff}
+    .build-list{display:grid;grid-template-columns:1fr;gap:10px}
+    .build-card{display:flex;align-items:center;gap:14px;min-height:78px;padding:14px 15px;border-radius:22px;border:1px solid rgba(255,255,255,.08);background:#111113;transition:transform .25s var(--ease),border-color .25s ease,background .25s ease}
+    .build-card:hover{transform:translateY(-1px);border-color:rgba(255,255,255,.14)}
+    .build-version{width:58px;height:50px;flex:0 0 58px;border-radius:15px;background:#1b1b1e;display:grid;place-items:center;font-size:15px;font-weight:800;letter-spacing:-.035em;border:1px solid rgba(255,255,255,.06)}
+    .build-meta{min-width:0;flex:1}.build-meta b{display:block;font-size:14px;letter-spacing:-.02em}.build-meta small{display:block;margin-top:4px;color:#727278;font-size:11px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .statuses{margin-left:auto;display:flex;flex-wrap:wrap;justify-content:flex-end;gap:5px;max-width:145px}
+    .status{padding:5px 7px;border-radius:999px;font-size:9px;font-weight:800;letter-spacing:.055em;text-transform:uppercase;white-space:nowrap;border:1px solid transparent}
+    .status.stable{color:#8ff0ae;background:rgba(52,199,89,.10);border-color:rgba(52,199,89,.16)}
+    .status.latest{color:#92c5ff;background:rgba(41,151,255,.12);border-color:rgba(41,151,255,.18)}
+    .status.outdated{color:#b0b0b6;background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.08)}
+    .status.offline{color:#ffca76;background:rgba(255,159,10,.09);border-color:rgba(255,159,10,.14)}
+    .status.unstable{color:#ff8d8d;background:rgba(255,69,58,.09);border-color:rgba(255,69,58,.14)}
+    .dev-note{margin:16px 2px 0;color:#66666c;font-size:11px;line-height:1.5}
+
+    .membership-modal{position:fixed;inset:0;z-index:120;display:none;place-items:end center;padding:14px;background:rgba(0,0,0,.58);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+    .membership-modal.open{display:grid}
+    .modal-card{width:min(520px,100%);border-radius:30px;background:#171719;border:1px solid rgba(255,255,255,.12);box-shadow:0 30px 100px rgba(0,0,0,.55);padding:25px;color:#fff}
+    .modal-card h3{margin:13px 0 8px;font-size:30px;letter-spacing:-.045em}.modal-card p{margin:0;color:#9a9aa0;line-height:1.5}.modal-row{display:flex;align-items:end;justify-content:space-between;gap:18px;margin-top:25px}.modal-close{border:0;background:rgba(255,255,255,.08);color:#fff;width:38px;height:38px;border-radius:50%;font-size:20px;cursor:pointer;float:right}.locked-info{margin-top:14px;padding:12px 14px;border-radius:16px;background:rgba(255,255,255,.055);color:#88888e;font-size:12px;line-height:1.45}
+
     @media (min-width:740px){
       :root{--pad:38px}
-      .nav{padding-left:20px}.nav-links{display:flex}.nav-cta{margin-left:0}
+      .nav{padding-left:20px}.nav-links{display:flex}.nav-cta{margin-left:0}.lang-switch{margin-left:0}
       .hero{padding-top:160px}.hero-art{height:370px;margin-top:30px}.halo{width:330px;height:330px}.glass-chip{width:400px;height:114px}
       .intro{padding:150px var(--pad) 130px}
       .products{padding-bottom:150px}.section-head{flex-direction:row;justify-content:space-between;align-items:end}.section-head p{max-width:330px;text-align:right}
       .link-showcase{min-height:760px;padding:38px 38px 0}.product-copy{margin-top:80px}.device-stage{left:auto;right:-36px;bottom:-100px;transform:none;width:520px}.product-copy{max-width:500px}.product-copy p{max-width:420px}
       .bento{grid-template-columns:1fr 1fr}.bento-card{min-height:410px;padding:34px}.bento-card h3{font-size:43px}
       .principles{grid-template-columns:repeat(3,1fr)}.principle{min-height:310px;padding:28px}.principle h3{margin-top:105px}
-      .future,.philosophy{padding-top:150px;padding-bottom:150px}.footer{padding-top:120px}
+      .future,.philosophy,.dev-builds{padding-top:150px;padding-bottom:150px}.footer{padding-top:120px}
+      .membership-card{grid-template-columns:1fr auto;align-items:center;padding:30px}.membership-side{min-width:245px}.build-list{grid-template-columns:repeat(2,1fr)}.membership-modal{place-items:center}
     }
 
     @media (min-width:1040px){
       .link-showcase{min-height:700px}.device-stage{right:10px;bottom:-110px}.product-copy{margin-top:95px}.product-copy h3{font-size:76px}
+      .build-list{grid-template-columns:repeat(3,1fr)}
     }
 
     @media (prefers-reduced-motion:reduce){
@@ -256,11 +307,16 @@
     <header class="nav" aria-label="NEXTworks navigation">
       <a class="wordmark" href="#top">NEXT<span>works</span></a>
       <nav class="nav-links" aria-label="Main navigation">
-        <a href="#products">Products</a>
-        <a href="#company">Company</a>
-        <a href="#future">What’s next</a>
+        <a href="#products" data-i18n="navProducts">Products</a>
+        <a href="#dev-builds" data-i18n="navBuilds">Dev Builds</a>
+        <a href="#company" data-i18n="navCompany">Company</a>
+        <a href="#future" data-i18n="navNext">What’s next</a>
       </nav>
-      <a class="nav-cta" href="#contact">Contact</a>
+      <div class="lang-switch" aria-label="Language">
+        <button type="button" data-lang="cs">CZ</button>
+        <button type="button" data-lang="en">EN</button>
+      </div>
+      <a class="nav-cta" href="#contact" data-i18n="navContact">Contact</a>
     </header>
   </div>
 
@@ -268,51 +324,51 @@
     <section class="hero" id="top">
       <div class="hero-noise" aria-hidden="true"></div>
       <div class="hero-wrap">
-        <p class="eyebrow reveal">NEXT-GENERATION PRODUCT COMPANY</p>
-        <h1 class="reveal delay-1">Build what’s <span class="soft">next.</span></h1>
-        <p class="hero-copy reveal delay-2">NEXTworks creates digital products designed to feel effortless, personal and ready for what comes after today.</p>
+        <p class="eyebrow reveal" data-i18n="heroEyebrow">NEXT-GENERATION PRODUCT COMPANY</p>
+        <h1 class="reveal delay-1" data-i18n-html="heroTitle">Build what’s <span class="soft">next.</span></h1>
+        <p class="hero-copy reveal delay-2" data-i18n="heroCopy">NEXTworks creates digital products designed to feel effortless, personal and ready for what comes after today.</p>
         <div class="hero-actions reveal delay-2">
-          <a class="btn btn-primary" href="#products">Explore our products <span>↓</span></a>
-          <a class="btn btn-glass" href="#company">Meet NEXTworks</a>
+          <a class="btn btn-primary" href="#products"><span data-i18n="exploreProducts">Explore our products</span> <span>↓</span></a>
+          <a class="btn btn-glass" href="#company" data-i18n="meetNW">Meet NEXTworks</a>
         </div>
 
         <div class="hero-art reveal delay-2" id="heroArt" aria-hidden="true">
           <div class="halo"></div>
           <div class="glass-chip">
             <div class="chip-mark">NW</div>
-            <div class="chip-copy"><b>NEXTworks</b><span>Products for the next generation.</span></div>
+            <div class="chip-copy"><b>NEXTworks</b><span data-i18n="chipCopy">Products for the next generation.</span></div>
             <div class="chip-arrow">↗</div>
           </div>
         </div>
       </div>
-      <div class="scroll-hint">Scroll to explore</div>
+      <div class="scroll-hint" data-i18n="scroll">Scroll to explore</div>
     </section>
 
     <section class="intro light-section" id="company">
       <div class="intro-inner">
-        <p class="eyebrow dark-eyebrow reveal">WHO WE ARE</p>
-        <h2 class="display reveal">Technology should feel <span class="muted">obvious.</span></h2>
-        <p class="reveal">We bring product, design and engineering together from day one — so the technology disappears and the experience is what people remember.</p>
+        <p class="eyebrow dark-eyebrow reveal" data-i18n="whoEyebrow">WHO WE ARE</p>
+        <h2 class="display reveal" data-i18n-html="whoTitle">Technology should feel <span class="muted">obvious.</span></h2>
+        <p class="reveal" data-i18n="whoCopy">We bring product, design and engineering together from day one — so the technology disappears and the experience is what people remember.</p>
       </div>
     </section>
 
     <section class="products" id="products">
       <div class="section-wrap">
         <div class="section-head reveal">
-          <div><p class="eyebrow dark-eyebrow">MADE BY NEXTWORKS</p><h2>Products with<br>their own point of view.</h2></div>
-          <p>Each NEXTworks product is built as a distinct experience, connected by the same obsession with clarity and feel.</p>
+          <div><p class="eyebrow dark-eyebrow" data-i18n="madeBy">MADE BY NEXTWORKS</p><h2 data-i18n-html="productsTitle">Products with<br>their own point of view.</h2></div>
+          <p data-i18n="productsCopy">Each NEXTworks product is built as a distinct experience, connected by the same obsession with clarity and feel.</p>
         </div>
 
         <article class="link-showcase reveal">
           <div class="product-top">
             <div class="product-name">LINK<i>.</i></div>
-            <div class="product-tag">Product 01 · In development</div>
+            <div class="product-tag" data-i18n="productTag">Product 01 · In development</div>
           </div>
           <div class="product-copy">
-            <p class="kicker">SOCIAL, REIMAGINED</p>
-            <h3>Closer to what matters.</h3>
-            <p>LINK is a social experience focused on real conversations, expressive identity and a more personal way to stay connected.</p>
-            <a class="product-link" href="#future">Discover the vision <span>→</span></a>
+            <p class="kicker" data-i18n="linkKicker">SOCIAL, REIMAGINED</p>
+            <h3 data-i18n="linkTitle">Closer to what matters.</h3>
+            <p data-i18n="linkCopy">LINK is a social experience focused on real conversations, expressive identity and a more personal way to stay connected.</p>
+            <a class="product-link" href="#future"><span data-i18n="discoverVision">Discover the vision</span> <span>→</span></a>
           </div>
 
           <div class="device-stage" aria-hidden="true">
@@ -327,27 +383,226 @@
 
         <div class="bento">
           <article class="bento-card dark reveal">
-            <p>NEXTWORKS LABS</p>
-            <h3>Where the next<br>idea starts.</h3>
+            <p data-i18n="labsEyebrow">NEXTWORKS LABS</p>
+            <h3 data-i18n-html="labsTitle">Where the next<br>idea starts.</h3>
             <div class="lab-orbit" aria-hidden="true"></div>
           </article>
           <article class="bento-card reveal delay-1">
-            <p>ONE SYSTEM</p>
-            <h3>Design and code.<br>Built together.</h3>
+            <p data-i18n="systemEyebrow">ONE SYSTEM</p>
+            <h3 data-i18n-html="systemTitle">Design and code.<br>Built together.</h3>
             <div class="systems-art" aria-hidden="true"><i></i><i></i><i></i></div>
           </article>
         </div>
       </div>
     </section>
 
+
+    <section class="dev-builds" id="dev-builds">
+      <div class="dev-inner">
+        <div class="dev-head reveal">
+          <p class="eyebrow" data-i18n="devEyebrow">LINK DEV BUILDS</p>
+          <h2 data-i18n-html="devTitle">Test what comes<br>before everyone else.</h2>
+          <p data-i18n="devCopy">Access selected LINK development builds, archived previews and the latest stable testing releases through NW Dev Testing.</p>
+        </div>
+
+        <div class="membership-card reveal">
+          <div>
+            <div class="membership-badge"><i></i><span data-i18n="membershipRequired">MEMBERSHIP REQUIRED</span></div>
+            <h3>NW Dev Testing</h3>
+            <p data-i18n="membershipCopy">One membership unlocks access to the LINK dev build library. Early versions 1.0–3.9 are preserved for offline preview; current testing begins with 4.0.</p>
+          </div>
+          <div class="membership-side">
+            <div class="price"><strong>$49</strong><span data-i18n="oneTime">one-time payment</span></div>
+            <button class="join-btn" type="button" id="joinDev" data-i18n="joinDev">Join Dev Testing</button>
+          </div>
+        </div>
+
+        <div class="builds-toolbar reveal" aria-label="Build filters">
+          <button class="filter-chip active" type="button" data-filter="all" data-i18n="filterAll">All builds</button>
+          <button class="filter-chip" type="button" data-filter="latest" data-i18n="filterLatest">Latest</button>
+          <button class="filter-chip" type="button" data-filter="stable" data-i18n="filterStable">Stable</button>
+          <button class="filter-chip" type="button" data-filter="archived" data-i18n="filterArchived">Archived</button>
+        </div>
+
+        <div class="build-list" id="buildList">
+          <article class="build-card archived-build" data-build-type="archived">
+            <div class="build-version">1.0</div>
+            <div class="build-meta"><b>LINK 1.0</b><small data-i18n="offlinePreview">For offline preview only</small></div>
+            <div class="statuses"><span class="status outdated" data-i18n="statusOutdated">Outdated</span><span class="status offline" data-i18n="statusOffline">Offline</span><span class="status unstable" data-i18n="statusUnstable">Unstable</span></div>
+          </article>
+          <article class="build-card archived-build" data-build-type="archived">
+            <div class="build-version">1.1</div>
+            <div class="build-meta"><b>LINK 1.1</b><small data-i18n="offlinePreview">For offline preview only</small></div>
+            <div class="statuses"><span class="status outdated" data-i18n="statusOutdated">Outdated</span><span class="status offline" data-i18n="statusOffline">Offline</span><span class="status unstable" data-i18n="statusUnstable">Unstable</span></div>
+          </article>
+          <article class="build-card archived-build" data-build-type="archived">
+            <div class="build-version">1.2</div>
+            <div class="build-meta"><b>LINK 1.2</b><small data-i18n="offlinePreview">For offline preview only</small></div>
+            <div class="statuses"><span class="status outdated" data-i18n="statusOutdated">Outdated</span><span class="status offline" data-i18n="statusOffline">Offline</span><span class="status unstable" data-i18n="statusUnstable">Unstable</span></div>
+          </article>
+          <article class="build-card archived-build" data-build-type="archived">
+            <div class="build-version">1.3</div>
+            <div class="build-meta"><b>LINK 1.3</b><small data-i18n="offlinePreview">For offline preview only</small></div>
+            <div class="statuses"><span class="status outdated" data-i18n="statusOutdated">Outdated</span><span class="status offline" data-i18n="statusOffline">Offline</span><span class="status unstable" data-i18n="statusUnstable">Unstable</span></div>
+          </article>
+          <article class="build-card archived-build" data-build-type="archived">
+            <div class="build-version">1.4</div>
+            <div class="build-meta"><b>LINK 1.4</b><small data-i18n="offlinePreview">For offline preview only</small></div>
+            <div class="statuses"><span class="status outdated" data-i18n="statusOutdated">Outdated</span><span class="status offline" data-i18n="statusOffline">Offline</span><span class="status unstable" data-i18n="statusUnstable">Unstable</span></div>
+          </article>
+          <article class="build-card archived-build" data-build-type="archived">
+            <div class="build-version">1.5</div>
+            <div class="build-meta"><b>LINK 1.5</b><small data-i18n="offlinePreview">For offline preview only</small></div>
+            <div class="statuses"><span class="status outdated" data-i18n="statusOutdated">Outdated</span><span class="status offline" data-i18n="statusOffline">Offline</span><span class="status unstable" data-i18n="statusUnstable">Unstable</span></div>
+          </article>
+          <article class="build-card archived-build" data-build-type="archived">
+            <div class="build-version">1.6</div>
+            <div class="build-meta"><b>LINK 1.6</b><small data-i18n="offlinePreview">For offline preview only</small></div>
+            <div class="statuses"><span class="status outdated" data-i18n="statusOutdated">Outdated</span><span class="status offline" data-i18n="statusOffline">Offline</span><span class="status unstable" data-i18n="statusUnstable">Unstable</span></div>
+          </article>
+          <article class="build-card archived-build" data-build-type="archived">
+            <div class="build-version">1.7</div>
+            <div class="build-meta"><b>LINK 1.7</b><small data-i18n="offlinePreview">For offline preview only</small></div>
+            <div class="statuses"><span class="status outdated" data-i18n="statusOutdated">Outdated</span><span class="status offline" data-i18n="statusOffline">Offline</span><span class="status unstable" data-i18n="statusUnstable">Unstable</span></div>
+          </article>
+          <article class="build-card archived-build" data-build-type="archived">
+            <div class="build-version">1.8</div>
+            <div class="build-meta"><b>LINK 1.8</b><small data-i18n="offlinePreview">For offline preview only</small></div>
+            <div class="statuses"><span class="status outdated" data-i18n="statusOutdated">Outdated</span><span class="status offline" data-i18n="statusOffline">Offline</span><span class="status unstable" data-i18n="statusUnstable">Unstable</span></div>
+          </article>
+          <article class="build-card archived-build" data-build-type="archived">
+            <div class="build-version">1.9</div>
+            <div class="build-meta"><b>LINK 1.9</b><small data-i18n="offlinePreview">For offline preview only</small></div>
+            <div class="statuses"><span class="status outdated" data-i18n="statusOutdated">Outdated</span><span class="status offline" data-i18n="statusOffline">Offline</span><span class="status unstable" data-i18n="statusUnstable">Unstable</span></div>
+          </article>
+          <article class="build-card archived-build" data-build-type="archived">
+            <div class="build-version">2.0</div>
+            <div class="build-meta"><b>LINK 2.0</b><small data-i18n="offlinePreview">For offline preview only</small></div>
+            <div class="statuses"><span class="status outdated" data-i18n="statusOutdated">Outdated</span><span class="status offline" data-i18n="statusOffline">Offline</span><span class="status unstable" data-i18n="statusUnstable">Unstable</span></div>
+          </article>
+          <article class="build-card archived-build" data-build-type="archived">
+            <div class="build-version">2.1</div>
+            <div class="build-meta"><b>LINK 2.1</b><small data-i18n="offlinePreview">For offline preview only</small></div>
+            <div class="statuses"><span class="status outdated" data-i18n="statusOutdated">Outdated</span><span class="status offline" data-i18n="statusOffline">Offline</span><span class="status unstable" data-i18n="statusUnstable">Unstable</span></div>
+          </article>
+          <article class="build-card archived-build" data-build-type="archived">
+            <div class="build-version">2.2</div>
+            <div class="build-meta"><b>LINK 2.2</b><small data-i18n="offlinePreview">For offline preview only</small></div>
+            <div class="statuses"><span class="status outdated" data-i18n="statusOutdated">Outdated</span><span class="status offline" data-i18n="statusOffline">Offline</span><span class="status unstable" data-i18n="statusUnstable">Unstable</span></div>
+          </article>
+          <article class="build-card archived-build" data-build-type="archived">
+            <div class="build-version">2.3</div>
+            <div class="build-meta"><b>LINK 2.3</b><small data-i18n="offlinePreview">For offline preview only</small></div>
+            <div class="statuses"><span class="status outdated" data-i18n="statusOutdated">Outdated</span><span class="status offline" data-i18n="statusOffline">Offline</span><span class="status unstable" data-i18n="statusUnstable">Unstable</span></div>
+          </article>
+          <article class="build-card archived-build" data-build-type="archived">
+            <div class="build-version">2.4</div>
+            <div class="build-meta"><b>LINK 2.4</b><small data-i18n="offlinePreview">For offline preview only</small></div>
+            <div class="statuses"><span class="status outdated" data-i18n="statusOutdated">Outdated</span><span class="status offline" data-i18n="statusOffline">Offline</span><span class="status unstable" data-i18n="statusUnstable">Unstable</span></div>
+          </article>
+          <article class="build-card archived-build" data-build-type="archived">
+            <div class="build-version">2.5</div>
+            <div class="build-meta"><b>LINK 2.5</b><small data-i18n="offlinePreview">For offline preview only</small></div>
+            <div class="statuses"><span class="status outdated" data-i18n="statusOutdated">Outdated</span><span class="status offline" data-i18n="statusOffline">Offline</span><span class="status unstable" data-i18n="statusUnstable">Unstable</span></div>
+          </article>
+          <article class="build-card archived-build" data-build-type="archived">
+            <div class="build-version">2.6</div>
+            <div class="build-meta"><b>LINK 2.6</b><small data-i18n="offlinePreview">For offline preview only</small></div>
+            <div class="statuses"><span class="status outdated" data-i18n="statusOutdated">Outdated</span><span class="status offline" data-i18n="statusOffline">Offline</span><span class="status unstable" data-i18n="statusUnstable">Unstable</span></div>
+          </article>
+          <article class="build-card archived-build" data-build-type="archived">
+            <div class="build-version">2.7</div>
+            <div class="build-meta"><b>LINK 2.7</b><small data-i18n="offlinePreview">For offline preview only</small></div>
+            <div class="statuses"><span class="status outdated" data-i18n="statusOutdated">Outdated</span><span class="status offline" data-i18n="statusOffline">Offline</span><span class="status unstable" data-i18n="statusUnstable">Unstable</span></div>
+          </article>
+          <article class="build-card archived-build" data-build-type="archived">
+            <div class="build-version">2.8</div>
+            <div class="build-meta"><b>LINK 2.8</b><small data-i18n="offlinePreview">For offline preview only</small></div>
+            <div class="statuses"><span class="status outdated" data-i18n="statusOutdated">Outdated</span><span class="status offline" data-i18n="statusOffline">Offline</span><span class="status unstable" data-i18n="statusUnstable">Unstable</span></div>
+          </article>
+          <article class="build-card archived-build" data-build-type="archived">
+            <div class="build-version">2.9</div>
+            <div class="build-meta"><b>LINK 2.9</b><small data-i18n="offlinePreview">For offline preview only</small></div>
+            <div class="statuses"><span class="status outdated" data-i18n="statusOutdated">Outdated</span><span class="status offline" data-i18n="statusOffline">Offline</span><span class="status unstable" data-i18n="statusUnstable">Unstable</span></div>
+          </article>
+          <article class="build-card archived-build" data-build-type="archived">
+            <div class="build-version">3.0</div>
+            <div class="build-meta"><b>LINK 3.0</b><small data-i18n="offlinePreview">For offline preview only</small></div>
+            <div class="statuses"><span class="status outdated" data-i18n="statusOutdated">Outdated</span><span class="status offline" data-i18n="statusOffline">Offline</span><span class="status unstable" data-i18n="statusUnstable">Unstable</span></div>
+          </article>
+          <article class="build-card archived-build" data-build-type="archived">
+            <div class="build-version">3.1</div>
+            <div class="build-meta"><b>LINK 3.1</b><small data-i18n="offlinePreview">For offline preview only</small></div>
+            <div class="statuses"><span class="status outdated" data-i18n="statusOutdated">Outdated</span><span class="status offline" data-i18n="statusOffline">Offline</span><span class="status unstable" data-i18n="statusUnstable">Unstable</span></div>
+          </article>
+          <article class="build-card archived-build" data-build-type="archived">
+            <div class="build-version">3.2</div>
+            <div class="build-meta"><b>LINK 3.2</b><small data-i18n="offlinePreview">For offline preview only</small></div>
+            <div class="statuses"><span class="status outdated" data-i18n="statusOutdated">Outdated</span><span class="status offline" data-i18n="statusOffline">Offline</span><span class="status unstable" data-i18n="statusUnstable">Unstable</span></div>
+          </article>
+          <article class="build-card archived-build" data-build-type="archived">
+            <div class="build-version">3.3</div>
+            <div class="build-meta"><b>LINK 3.3</b><small data-i18n="offlinePreview">For offline preview only</small></div>
+            <div class="statuses"><span class="status outdated" data-i18n="statusOutdated">Outdated</span><span class="status offline" data-i18n="statusOffline">Offline</span><span class="status unstable" data-i18n="statusUnstable">Unstable</span></div>
+          </article>
+          <article class="build-card archived-build" data-build-type="archived">
+            <div class="build-version">3.4</div>
+            <div class="build-meta"><b>LINK 3.4</b><small data-i18n="offlinePreview">For offline preview only</small></div>
+            <div class="statuses"><span class="status outdated" data-i18n="statusOutdated">Outdated</span><span class="status offline" data-i18n="statusOffline">Offline</span><span class="status unstable" data-i18n="statusUnstable">Unstable</span></div>
+          </article>
+          <article class="build-card archived-build" data-build-type="archived">
+            <div class="build-version">3.5</div>
+            <div class="build-meta"><b>LINK 3.5</b><small data-i18n="offlinePreview">For offline preview only</small></div>
+            <div class="statuses"><span class="status outdated" data-i18n="statusOutdated">Outdated</span><span class="status offline" data-i18n="statusOffline">Offline</span><span class="status unstable" data-i18n="statusUnstable">Unstable</span></div>
+          </article>
+          <article class="build-card archived-build" data-build-type="archived">
+            <div class="build-version">3.6</div>
+            <div class="build-meta"><b>LINK 3.6</b><small data-i18n="offlinePreview">For offline preview only</small></div>
+            <div class="statuses"><span class="status outdated" data-i18n="statusOutdated">Outdated</span><span class="status offline" data-i18n="statusOffline">Offline</span><span class="status unstable" data-i18n="statusUnstable">Unstable</span></div>
+          </article>
+          <article class="build-card archived-build" data-build-type="archived">
+            <div class="build-version">3.7</div>
+            <div class="build-meta"><b>LINK 3.7</b><small data-i18n="offlinePreview">For offline preview only</small></div>
+            <div class="statuses"><span class="status outdated" data-i18n="statusOutdated">Outdated</span><span class="status offline" data-i18n="statusOffline">Offline</span><span class="status unstable" data-i18n="statusUnstable">Unstable</span></div>
+          </article>
+          <article class="build-card archived-build" data-build-type="archived">
+            <div class="build-version">3.8</div>
+            <div class="build-meta"><b>LINK 3.8</b><small data-i18n="offlinePreview">For offline preview only</small></div>
+            <div class="statuses"><span class="status outdated" data-i18n="statusOutdated">Outdated</span><span class="status offline" data-i18n="statusOffline">Offline</span><span class="status unstable" data-i18n="statusUnstable">Unstable</span></div>
+          </article>
+          <article class="build-card archived-build" data-build-type="archived">
+            <div class="build-version">3.9</div>
+            <div class="build-meta"><b>LINK 3.9</b><small data-i18n="offlinePreview">For offline preview only</small></div>
+            <div class="statuses"><span class="status outdated" data-i18n="statusOutdated">Outdated</span><span class="status offline" data-i18n="statusOffline">Offline</span><span class="status unstable" data-i18n="statusUnstable">Unstable</span></div>
+          </article>
+          <article class="build-card stable-build" data-build-type="stable">
+            <div class="build-version">4.0</div>
+            <div class="build-meta"><b>LINK 4.0</b><small data-i18n="devTestingBuild">NW Dev Testing build</small></div>
+            <div class="statuses"><span class="status stable" data-i18n="statusStable">Stable</span></div>
+          </article>
+          <article class="build-card stable-build" data-build-type="stable">
+            <div class="build-version">4.1</div>
+            <div class="build-meta"><b>LINK 4.1</b><small data-i18n="devTestingBuild">NW Dev Testing build</small></div>
+            <div class="statuses"><span class="status stable" data-i18n="statusStable">Stable</span></div>
+          </article>
+          <article class="build-card stable-build" data-build-type="latest">
+            <div class="build-version">4.2</div>
+            <div class="build-meta"><b>LINK 4.2</b><small data-i18n="currentDevBuild">Current NW Dev Testing build</small></div>
+            <div class="statuses"><span class="status latest" data-i18n="statusLatest">Latest</span><span class="status stable" data-i18n="statusStable">Stable</span></div>
+          </article>
+        </div>
+        <p class="dev-note reveal" data-i18n="devNote">Build access is membership-gated. Archived versions are intended only for offline preview and may contain incomplete or unstable functionality.</p>
+      </div>
+    </section>
+
     <section class="philosophy" id="philosophy">
       <div class="philosophy-inner">
-        <p class="eyebrow reveal">OUR APPROACH</p>
-        <h2 class="display reveal">Less friction.<br><span class="muted">More feeling.</span></h2>
+        <p class="eyebrow reveal" data-i18n="approachEyebrow">OUR APPROACH</p>
+        <h2 class="display reveal" data-i18n-html="approachTitle">Less friction.<br><span class="muted">More feeling.</span></h2>
         <div class="principles">
-          <article class="principle reveal"><div class="num">01 / PEOPLE</div><h3>Human first.</h3><p>We begin with how something should feel to use, not with a list of features.</p></article>
-          <article class="principle reveal delay-1"><div class="num">02 / CRAFT</div><h3>Designed deeply.</h3><p>Interface, motion and behavior are treated as one coherent product experience.</p></article>
-          <article class="principle reveal delay-2"><div class="num">03 / SYSTEMS</div><h3>Built to evolve.</h3><p>Every product is designed as a system that can grow without losing its clarity.</p></article>
+          <article class="principle reveal"><div class="num" data-i18n="p1num">01 / PEOPLE</div><h3 data-i18n="p1title">Human first.</h3><p data-i18n="p1copy">We begin with how something should feel to use, not with a list of features.</p></article>
+          <article class="principle reveal delay-1"><div class="num" data-i18n="p2num">02 / CRAFT</div><h3 data-i18n="p2title">Designed deeply.</h3><p data-i18n="p2copy">Interface, motion and behavior are treated as one coherent product experience.</p></article>
+          <article class="principle reveal delay-2"><div class="num" data-i18n="p3num">03 / SYSTEMS</div><h3 data-i18n="p3title">Built to evolve.</h3><p data-i18n="p3copy">Every product is designed as a system that can grow without losing its clarity.</p></article>
         </div>
       </div>
     </section>
@@ -355,38 +610,107 @@
     <section class="future" id="future">
       <div class="future-inner">
         <div class="future-pill reveal"><i></i> NEXTworks / 2026</div>
-        <h2 class="reveal">This is only the <span>beginning.</span></h2>
-        <p class="reveal">LINK is the first chapter. More products, experiments and ideas will follow under NEXTworks.</p>
+        <h2 class="reveal" data-i18n-html="futureTitle">This is only the <span>beginning.</span></h2>
+        <p class="reveal" data-i18n="futureCopy">LINK is the first chapter. More products, experiments and ideas will follow under NEXTworks.</p>
       </div>
     </section>
 
     <footer class="footer" id="contact">
       <div class="footer-inner">
-        <p class="eyebrow reveal">LET’S BUILD WHAT’S NEXT</p>
-        <h2 class="reveal">Start a conversation.<br><span>We’re listening.</span></h2>
+        <p class="eyebrow reveal" data-i18n="footerEyebrow">LET’S BUILD WHAT’S NEXT</p>
+        <h2 class="reveal" data-i18n-html="footerTitle">Start a conversation.<br><span>We’re listening.</span></h2>
         <a class="mail reveal" href="mailto:hello@nextworks.company">hello@nextworks.company <span>↗</span></a>
         <div class="footer-line"></div>
-        <div class="footer-meta"><span class="wordmark">NEXT<span>works</span></span><span><b>Home of LINK.</b></span><span>© <span id="year"></span> NEXTworks</span></div>
+        <div class="footer-meta"><span class="wordmark">NEXT<span>works</span></span><span><b data-i18n="homeOfLink">Home of LINK.</b></span><span>© <span id="year"></span> NEXTworks</span></div>
       </div>
     </footer>
   </main>
 
+
+  <div class="membership-modal" id="membershipModal" aria-hidden="true">
+    <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" type="button" id="modalClose" aria-label="Close">×</button>
+      <div class="membership-badge"><i></i><span>NW DEV TESTING</span></div>
+      <h3 id="modalTitle" data-i18n="modalTitle">Unlock LINK dev builds.</h3>
+      <p data-i18n="modalCopy">NW Dev Testing membership gives you access to the development build library for a one-time payment.</p>
+      <div class="locked-info" data-i18n="modalInfo">Payment processing is not connected in this preview yet. This button can later be linked to Stripe, Lemon Squeezy or another checkout provider.</div>
+      <div class="modal-row"><div class="price"><strong>$49</strong><span data-i18n="oneTime">one-time payment</span></div><button class="join-btn" type="button" data-i18n="comingSoon">Checkout coming soon</button></div>
+    </div>
+  </div>
+
   <script>
+    const i18n = {
+      en: {
+        navProducts:'Products', navBuilds:'Dev Builds', navCompany:'Company', navNext:'What’s next', navContact:'Contact',
+        heroEyebrow:'NEXT-GENERATION PRODUCT COMPANY', heroTitle:'Build what’s <span class="soft">next.</span>', heroCopy:'NEXTworks creates digital products designed to feel effortless, personal and ready for what comes after today.', exploreProducts:'Explore our products', meetNW:'Meet NEXTworks', chipCopy:'Products for the next generation.', scroll:'Scroll to explore',
+        whoEyebrow:'WHO WE ARE', whoTitle:'Technology should feel <span class="muted">obvious.</span>', whoCopy:'We bring product, design and engineering together from day one — so the technology disappears and the experience is what people remember.',
+        madeBy:'MADE BY NEXTWORKS', productsTitle:'Products with<br>their own point of view.', productsCopy:'Each NEXTworks product is built as a distinct experience, connected by the same obsession with clarity and feel.', productTag:'Product 01 · In development', linkKicker:'SOCIAL, REIMAGINED', linkTitle:'Closer to what matters.', linkCopy:'LINK is a social experience focused on real conversations, expressive identity and a more personal way to stay connected.', discoverVision:'Discover the vision',
+        labsEyebrow:'NEXTWORKS LABS', labsTitle:'Where the next<br>idea starts.', systemEyebrow:'ONE SYSTEM', systemTitle:'Design and code.<br>Built together.',
+        devEyebrow:'LINK DEV BUILDS', devTitle:'Test what comes<br>before everyone else.', devCopy:'Access selected LINK development builds, archived previews and the latest stable testing releases through NW Dev Testing.', membershipRequired:'MEMBERSHIP REQUIRED', membershipCopy:'One membership unlocks access to the LINK dev build library. Early versions 1.0–3.9 are preserved for offline preview; current testing begins with 4.0.', oneTime:'one-time payment', joinDev:'Join Dev Testing', filterAll:'All builds', filterLatest:'Latest', filterStable:'Stable', filterArchived:'Archived', offlinePreview:'For offline preview only', devTestingBuild:'NW Dev Testing build', currentDevBuild:'Current NW Dev Testing build', statusOutdated:'Outdated', statusOffline:'Offline', statusUnstable:'Unstable', statusStable:'Stable', statusLatest:'Latest', devNote:'Build access is membership-gated. Archived versions are intended only for offline preview and may contain incomplete or unstable functionality.', modalTitle:'Unlock LINK dev builds.', modalCopy:'NW Dev Testing membership gives you access to the development build library for a one-time payment.', modalInfo:'Payment processing is not connected in this preview yet. This button can later be linked to Stripe, Lemon Squeezy or another checkout provider.', comingSoon:'Checkout coming soon',
+        approachEyebrow:'OUR APPROACH', approachTitle:'Less friction.<br><span class="muted">More feeling.</span>', p1num:'01 / PEOPLE', p1title:'Human first.', p1copy:'We begin with how something should feel to use, not with a list of features.', p2num:'02 / CRAFT', p2title:'Designed deeply.', p2copy:'Interface, motion and behavior are treated as one coherent product experience.', p3num:'03 / SYSTEMS', p3title:'Built to evolve.', p3copy:'Every product is designed as a system that can grow without losing its clarity.',
+        futureTitle:'This is only the <span>beginning.</span>', futureCopy:'LINK is the first chapter. More products, experiments and ideas will follow under NEXTworks.', footerEyebrow:'LET’S BUILD WHAT’S NEXT', footerTitle:'Start a conversation.<br><span>We’re listening.</span>', homeOfLink:'Home of LINK.'
+      },
+      cs: {
+        navProducts:'Produkty', navBuilds:'Dev buildy', navCompany:'Společnost', navNext:'Co bude dál', navContact:'Kontakt',
+        heroEyebrow:'PRODUKTOVÁ SPOLEČNOST NOVÉ GENERACE', heroTitle:'Tvoříme to, co přijde <span class="soft">dál.</span>', heroCopy:'NEXTworks vytváří digitální produkty, které působí přirozeně, osobně a jsou připravené na to, co přijde po dnešku.', exploreProducts:'Prozkoumat produkty', meetNW:'Poznat NEXTworks', chipCopy:'Produkty pro novou generaci.', scroll:'Posuň se dál',
+        whoEyebrow:'KDO JSME', whoTitle:'Technologie by měla působit <span class="muted">samozřejmě.</span>', whoCopy:'Produkt, design a vývoj propojujeme od prvního dne — aby technologie ustoupila do pozadí a lidé si pamatovali hlavně samotný zážitek.',
+        madeBy:'VYTVOŘENO NEXTWORKS', productsTitle:'Produkty s<br>vlastním pohledem.', productsCopy:'Každý produkt NEXTworks vzniká jako samostatný zážitek, ale všechny spojuje stejný důraz na jednoduchost, detail a pocit z používání.', productTag:'Produkt 01 · Ve vývoji', linkKicker:'SOCIÁLNÍ SÍŤ, ZNOVU PROMYŠLENÁ', linkTitle:'Blíž tomu, na čem záleží.', linkCopy:'LINK je sociální prostředí zaměřené na skutečné konverzace, výraznou identitu a osobnější způsob, jak zůstat ve spojení.', discoverVision:'Poznat vizi',
+        labsEyebrow:'NEXTWORKS LABS', labsTitle:'Místo, kde začíná<br>další nápad.', systemEyebrow:'JEDEN SYSTÉM', systemTitle:'Design a kód.<br>Vznikají společně.',
+        devEyebrow:'LINK DEV BUILDS', devTitle:'Vyzkoušej to, co přijde<br>dřív než pro ostatní.', devCopy:'Získej přístup k vybraným vývojovým verzím LINKu, archivním preview buildům a nejnovějším stabilním testovacím verzím přes NW Dev Testing.', membershipRequired:'VYŽADUJE ČLENSTVÍ', membershipCopy:'Jedno členství odemkne knihovnu LINK dev buildů. Starší verze 1.0–3.9 zůstávají zachované pro offline preview; aktuální testování začíná verzí 4.0.', oneTime:'jednorázová platba', joinDev:'Získat Dev Testing', filterAll:'Všechny buildy', filterLatest:'Nejnovější', filterStable:'Stabilní', filterArchived:'Archiv', offlinePreview:'Pouze pro offline preview', devTestingBuild:'NW Dev Testing build', currentDevBuild:'Aktuální NW Dev Testing build', statusOutdated:'Zastaralé', statusOffline:'Offline', statusUnstable:'Nestabilní', statusStable:'Stabilní', statusLatest:'Nejnovější', devNote:'Přístup k buildům vyžaduje členství. Archivní verze jsou určené pouze pro offline preview a mohou obsahovat nekompletní nebo nestabilní funkce.', modalTitle:'Odemkni LINK dev buildy.', modalCopy:'Členství NW Dev Testing ti zpřístupní knihovnu vývojových buildů za jednorázovou platbu.', modalInfo:'Platební brána zatím v této preview verzi není připojená. Tlačítko lze později napojit na Stripe, Lemon Squeezy nebo jiný checkout.', comingSoon:'Checkout již brzy',
+        approachEyebrow:'NÁŠ PŘÍSTUP', approachTitle:'Méně překážek.<br><span class="muted">Více pocitu.</span>', p1num:'01 / LIDÉ', p1title:'Nejdřív člověk.', p1copy:'Začínáme tím, jak se má produkt používat a jak má působit — ne seznamem funkcí.', p2num:'02 / DETAIL', p2title:'Design do hloubky.', p2copy:'Rozhraní, pohyb a chování bereme jako jeden souvislý produktový zážitek.', p3num:'03 / SYSTÉMY', p3title:'Připraveno růst.', p3copy:'Každý produkt navrhujeme jako systém, který se může rozvíjet bez ztráty jednoduchosti.',
+        futureTitle:'Tohle je teprve <span>začátek.</span>', futureCopy:'LINK je první kapitola. Pod NEXTworks budou následovat další produkty, experimenty a nápady.', footerEyebrow:'POJĎME TVOŘIT TO, CO BUDE DÁL', footerTitle:'Začněme konverzaci.<br><span>Posloucháme.</span>', homeOfLink:'Domov LINKu.'
+      }
+    };
+
+    const langButtons = document.querySelectorAll('[data-lang]');
+    function setLanguage(lang){
+      if(!i18n[lang]) lang='en';
+      document.documentElement.lang = lang;
+      localStorage.setItem('nw-lang', lang);
+      langButtons.forEach(b => b.classList.toggle('active', b.dataset.lang===lang));
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key=el.dataset.i18n; if(i18n[lang][key] !== undefined) el.textContent=i18n[lang][key];
+      });
+      document.querySelectorAll('[data-i18n-html]').forEach(el => {
+        const key=el.dataset.i18nHtml; if(i18n[lang][key] !== undefined) el.innerHTML=i18n[lang][key];
+      });
+      document.title = lang==='cs' ? 'NEXTworks — Tvoříme to, co přijde dál.' : 'NEXTworks — Build what’s next.';
+      document.getElementById('metaDescription').setAttribute('content', lang==='cs' ? 'NEXTworks vytváří digitální produkty nové generace. Domov LINKu.' : 'NEXTworks builds digital products for the next generation. Home of LINK.');
+    }
+    langButtons.forEach(b=>b.addEventListener('click',()=>setLanguage(b.dataset.lang)));
+    const preferred = localStorage.getItem('nw-lang') || (navigator.language && navigator.language.toLowerCase().startsWith('cs') ? 'cs' : 'en');
+    setLanguage(preferred);
+
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const reveals = document.querySelectorAll('.reveal');
     if (!reduced && 'IntersectionObserver' in window) {
       const io = new IntersectionObserver((entries, obs) => {
         entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('in');
-            obs.unobserve(entry.target);
-          }
+          if (entry.isIntersecting) { entry.target.classList.add('in'); obs.unobserve(entry.target); }
         });
       }, { threshold: .14, rootMargin: '0px 0px -5% 0px' });
       reveals.forEach(el => io.observe(el));
-    } else {
-      reveals.forEach(el => el.classList.add('in'));
-    }
+    } else reveals.forEach(el => el.classList.add('in'));
+
+    const chips=document.querySelectorAll('.filter-chip');
+    const builds=document.querySelectorAll('.build-card');
+    chips.forEach(chip=>chip.addEventListener('click',()=>{
+      chips.forEach(c=>c.classList.remove('active')); chip.classList.add('active');
+      const f=chip.dataset.filter;
+      builds.forEach(card=>{
+        const t=card.dataset.buildType;
+        card.style.display = (f==='all' || t===f || (f==='stable' && (t==='stable'||t==='latest'))) ? 'flex' : 'none';
+      });
+    }));
+
+    const modal=document.getElementById('membershipModal');
+    const join=document.getElementById('joinDev');
+    const close=document.getElementById('modalClose');
+    const openModal=()=>{modal.classList.add('open');modal.setAttribute('aria-hidden','false');document.body.style.overflow='hidden'};
+    const closeModal=()=>{modal.classList.remove('open');modal.setAttribute('aria-hidden','true');document.body.style.overflow=''};
+    join.addEventListener('click',openModal); close.addEventListener('click',closeModal);
+    modal.addEventListener('click',e=>{if(e.target===modal) closeModal()});
+    addEventListener('keydown',e=>{if(e.key==='Escape') closeModal()});
 
     const progress = document.getElementById('progress');
     const heroArt = document.getElementById('heroArt');
@@ -395,9 +719,7 @@
       const max = document.documentElement.scrollHeight - innerHeight;
       const ratio = max > 0 ? scrollY / max : 0;
       progress.style.width = (ratio * 100) + '%';
-      if (!reduced && heroArt && scrollY < innerHeight * 1.1) {
-        heroArt.style.transform = `translate3d(0, ${Math.min(scrollY * .08, 32)}px, 0)`;
-      }
+      if (!reduced && heroArt && scrollY < innerHeight * 1.1) heroArt.style.transform = `translate3d(0, ${Math.min(scrollY * .08, 32)}px, 0)`;
       ticking = false;
     }
     addEventListener('scroll', () => { if(!ticking){ requestAnimationFrame(updateScroll); ticking = true; } }, {passive:true});
